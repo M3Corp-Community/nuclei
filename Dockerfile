@@ -5,7 +5,7 @@ WORKDIR /app
 COPY . /app
 WORKDIR /app
 RUN go mod download
-RUN go build ./cmd/nuclei
+RUN go tool zen-go go build ./cmd/nuclei
 
 # Release
 FROM alpine:3.18.2
