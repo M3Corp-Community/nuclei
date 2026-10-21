@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/AikidoSec/firewall-go/zen"
 	"github.com/projectdiscovery/utils/auth/pdcp"
 	"github.com/projectdiscovery/utils/env"
 	_ "github.com/projectdiscovery/utils/pprof"
@@ -46,6 +47,10 @@ var (
 )
 
 func main() {
+	if err := zen.Protect(); err != nil {
+		panic(err)
+	}
+
 	if err := runner.ConfigureOptions(); err != nil {
 		gologger.Fatal().Msgf("Could not initialize options: %s\n", err)
 	}
